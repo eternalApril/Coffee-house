@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package barista;
+
+option go_package = "proto/barista";
+
+service BaristaService {
+  rpc StartPreparing(StartPreparingRequest) returns (StartPreparingResponse);
+  rpc OrderReady(OrderReadyRequest) returns (OrderReadyResponse);
+  rpc GetPendingOrders(GetPendingOrdersRequest) returns (GetPendingOrdersResponse);
+}
+
+message StartPreparingRequest {
+  string order_id = 1;
+}
+
+message StartPreparingResponse {
+  string status = 1;
+  string error = 2;
+}
+
+message OrderReadyRequest {
+  string order_id = 1;
+}
+
+message OrderReadyResponse {
+  string status = 1;
+  string error = 2;
+}
+
+message GetPendingOrdersRequest {}
+
+message GetPendingOrdersResponse {
+  repeated Order orders = 1;
+  string error = 2;
+}
+
+message Order {
+  string order_id = 1;
+  string user_id = 2;
+  string item = 3;
+  int32 quantity = 4;
+  string status = 5;
+}
