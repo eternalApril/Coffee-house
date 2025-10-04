@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.8
 // 	protoc        v6.32.0
-// source: order.proto
+// source: gen/order.proto
 
-package proto
+package order
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -32,7 +32,7 @@ type CreateOrderRequest struct {
 
 func (x *CreateOrderRequest) Reset() {
 	*x = CreateOrderRequest{}
-	mi := &file_order_proto_msgTypes[0]
+	mi := &file_gen_order_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +44,7 @@ func (x *CreateOrderRequest) String() string {
 func (*CreateOrderRequest) ProtoMessage() {}
 
 func (x *CreateOrderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_order_proto_msgTypes[0]
+	mi := &file_gen_order_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *CreateOrderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrderRequest.ProtoReflect.Descriptor instead.
 func (*CreateOrderRequest) Descriptor() ([]byte, []int) {
-	return file_order_proto_rawDescGZIP(), []int{0}
+	return file_gen_order_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateOrderRequest) GetUserId() string {
@@ -92,7 +92,7 @@ type CreateOrderResponse struct {
 
 func (x *CreateOrderResponse) Reset() {
 	*x = CreateOrderResponse{}
-	mi := &file_order_proto_msgTypes[1]
+	mi := &file_gen_order_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -104,7 +104,7 @@ func (x *CreateOrderResponse) String() string {
 func (*CreateOrderResponse) ProtoMessage() {}
 
 func (x *CreateOrderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_order_proto_msgTypes[1]
+	mi := &file_gen_order_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -117,7 +117,7 @@ func (x *CreateOrderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrderResponse.ProtoReflect.Descriptor instead.
 func (*CreateOrderResponse) Descriptor() ([]byte, []int) {
-	return file_order_proto_rawDescGZIP(), []int{1}
+	return file_gen_order_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CreateOrderResponse) GetOrderId() string {
@@ -150,7 +150,7 @@ type GetOrderStatusRequest struct {
 
 func (x *GetOrderStatusRequest) Reset() {
 	*x = GetOrderStatusRequest{}
-	mi := &file_order_proto_msgTypes[2]
+	mi := &file_gen_order_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -162,7 +162,7 @@ func (x *GetOrderStatusRequest) String() string {
 func (*GetOrderStatusRequest) ProtoMessage() {}
 
 func (x *GetOrderStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_order_proto_msgTypes[2]
+	mi := &file_gen_order_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -175,7 +175,7 @@ func (x *GetOrderStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOrderStatusRequest.ProtoReflect.Descriptor instead.
 func (*GetOrderStatusRequest) Descriptor() ([]byte, []int) {
-	return file_order_proto_rawDescGZIP(), []int{2}
+	return file_gen_order_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetOrderStatusRequest) GetOrderId() string {
@@ -195,7 +195,7 @@ type GetOrderStatusResponse struct {
 
 func (x *GetOrderStatusResponse) Reset() {
 	*x = GetOrderStatusResponse{}
-	mi := &file_order_proto_msgTypes[3]
+	mi := &file_gen_order_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -207,7 +207,7 @@ func (x *GetOrderStatusResponse) String() string {
 func (*GetOrderStatusResponse) ProtoMessage() {}
 
 func (x *GetOrderStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_order_proto_msgTypes[3]
+	mi := &file_gen_order_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -220,7 +220,7 @@ func (x *GetOrderStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOrderStatusResponse.ProtoReflect.Descriptor instead.
 func (*GetOrderStatusResponse) Descriptor() ([]byte, []int) {
-	return file_order_proto_rawDescGZIP(), []int{3}
+	return file_gen_order_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetOrderStatusResponse) GetStatus() string {
@@ -237,11 +237,11 @@ func (x *GetOrderStatusResponse) GetError() string {
 	return ""
 }
 
-var File_order_proto protoreflect.FileDescriptor
+var File_gen_order_proto protoreflect.FileDescriptor
 
-const file_order_proto_rawDesc = "" +
+const file_gen_order_proto_rawDesc = "" +
 	"\n" +
-	"\vorder.proto\x12\x05proto\"]\n" +
+	"\x0fgen/order.proto\x12\x05proto\"]\n" +
 	"\x12CreateOrderRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x12\n" +
 	"\x04item\x18\x02 \x01(\tR\x04item\x12\x1a\n" +
@@ -257,28 +257,28 @@ const file_order_proto_rawDesc = "" +
 	"\x05error\x18\x02 \x01(\tR\x05error2\xa3\x01\n" +
 	"\fOrderService\x12D\n" +
 	"\vCreateOrder\x12\x19.proto.CreateOrderRequest\x1a\x1a.proto.CreateOrderResponse\x12M\n" +
-	"\x0eGetOrderStatus\x12\x1c.proto.GetOrderStatusRequest\x1a\x1d.proto.GetOrderStatusResponseB,Z*github.com/eternalApril/Coffee-house/protob\x06proto3"
+	"\x0eGetOrderStatus\x12\x1c.proto.GetOrderStatusRequest\x1a\x1d.proto.GetOrderStatusResponseB\rZ\vproto/orderb\x06proto3"
 
 var (
-	file_order_proto_rawDescOnce sync.Once
-	file_order_proto_rawDescData []byte
+	file_gen_order_proto_rawDescOnce sync.Once
+	file_gen_order_proto_rawDescData []byte
 )
 
-func file_order_proto_rawDescGZIP() []byte {
-	file_order_proto_rawDescOnce.Do(func() {
-		file_order_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_order_proto_rawDesc), len(file_order_proto_rawDesc)))
+func file_gen_order_proto_rawDescGZIP() []byte {
+	file_gen_order_proto_rawDescOnce.Do(func() {
+		file_gen_order_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_gen_order_proto_rawDesc), len(file_gen_order_proto_rawDesc)))
 	})
-	return file_order_proto_rawDescData
+	return file_gen_order_proto_rawDescData
 }
 
-var file_order_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_order_proto_goTypes = []any{
+var file_gen_order_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_gen_order_proto_goTypes = []any{
 	(*CreateOrderRequest)(nil),     // 0: proto.CreateOrderRequest
 	(*CreateOrderResponse)(nil),    // 1: proto.CreateOrderResponse
 	(*GetOrderStatusRequest)(nil),  // 2: proto.GetOrderStatusRequest
 	(*GetOrderStatusResponse)(nil), // 3: proto.GetOrderStatusResponse
 }
-var file_order_proto_depIdxs = []int32{
+var file_gen_order_proto_depIdxs = []int32{
 	0, // 0: proto.OrderService.CreateOrder:input_type -> proto.CreateOrderRequest
 	2, // 1: proto.OrderService.GetOrderStatus:input_type -> proto.GetOrderStatusRequest
 	1, // 2: proto.OrderService.CreateOrder:output_type -> proto.CreateOrderResponse
@@ -290,26 +290,26 @@ var file_order_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_order_proto_init() }
-func file_order_proto_init() {
-	if File_order_proto != nil {
+func init() { file_gen_order_proto_init() }
+func file_gen_order_proto_init() {
+	if File_gen_order_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_order_proto_rawDesc), len(file_order_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_gen_order_proto_rawDesc), len(file_gen_order_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_order_proto_goTypes,
-		DependencyIndexes: file_order_proto_depIdxs,
-		MessageInfos:      file_order_proto_msgTypes,
+		GoTypes:           file_gen_order_proto_goTypes,
+		DependencyIndexes: file_gen_order_proto_depIdxs,
+		MessageInfos:      file_gen_order_proto_msgTypes,
 	}.Build()
-	File_order_proto = out.File
-	file_order_proto_goTypes = nil
-	file_order_proto_depIdxs = nil
+	File_gen_order_proto = out.File
+	file_gen_order_proto_goTypes = nil
+	file_gen_order_proto_depIdxs = nil
 }
