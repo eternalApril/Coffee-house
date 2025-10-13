@@ -66,6 +66,18 @@ services:
         condition: service_started
     restart: no
 
+  notification-service:
+    build:
+      context: .
+      dockerfile: notification-service/Dockerfile
+    container_name: notification-service
+    depends_on:
+      kafka:
+        condition: service_healthy
+      zookeeper:
+        condition: service_started
+    restart: no
+
   api-gateway:
     build:
       context: .

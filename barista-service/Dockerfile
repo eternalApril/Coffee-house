@@ -5,7 +5,7 @@ RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
 COPY barista-service/go.mod barista-service/go.sum ./
 COPY /proto gen
-RUN #protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative .\gen\order.proto
+RUN #protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative .\gen\barista.proto
 
 RUN go mod download
 

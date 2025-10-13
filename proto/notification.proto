@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package notification;
+
+option go_package = "proto/notification";
+
+service NotificationService {
+  rpc GetSentNotifications(GetSentNotificationsRequest) returns (GetSentNotificationsResponse);
+  rpc TriggerManualNotification(TriggerManualNotificationRequest) returns (TriggerManualNotificationResponse);
+}
+
+message GetSentNotificationsRequest {
+  string since = 1;
+}
+
+message GetSentNotificationsResponse {
+  repeated Notification notifications = 1;
+  string error = 2;
+}
+
+message TriggerManualNotificationRequest {
+  string order_id = 1;
+  string item = 2;
+  string status = 3;
+}
+
+message TriggerManualNotificationResponse {
+  string status = 1;
+  string error = 2;
+}
+
+message Notification {
+  string order_id = 1;
+  string item = 2;
+  string status = 3;
+  string timestamp = 4;  // ISO format
+}

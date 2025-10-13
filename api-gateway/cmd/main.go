@@ -2,6 +2,7 @@ package main
 
 import (
 	pb_barista "api-gateway/gen/barista"
+	pb_notification "api-gateway/gen/notification"
 	pb_order "api-gateway/gen/order"
 	"api-gateway/internal/handlers"
 	"errors"
@@ -13,7 +14,8 @@ import (
 )
 
 var (
-	orderClient pb_order.OrderServiceClient
+	orderClient        pb_order.OrderServiceClient
+	notificationClient pb_notification.NotificationServiceClient
 )
 
 func initConfig() error {
@@ -36,7 +38,6 @@ func main() {
 
 	app := fiber.New()
 
-	// gRPC клиент для Order Service
 	orderConn, err := grpc.NewClient("order-service:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("Failed to connect to Order Service: %v", err)
@@ -51,11 +52,21 @@ func main() {
 	defer baristaConn.Close()
 	baristaClient := pb_barista.NewBaristaServiceClient(baristaConn)
 
-	baristaGroup := app.Group("/barista")
+	notificationConn, err := grpc.NewClient("notification-service:50053", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalf("Failed to connect to Notification Service: %v", err)
+	}
+	defer notificationConn.Close()
+	notificationClient = pb_notification.NewNotificationServiceClient(notificationConn)
 
+	baristaGroup := app.Group("/barista")
 	baristaGroup.Post("/start/:order_id", handlers.StartPreparingHandler(baristaClient))
 	baristaGroup.Post("/ready/:order_id", handlers.OrderReadyHandler(baristaClient))
 	baristaGroup.Get("/pending", handlers.GetPendingOrdersHandler(baristaClient))
+
+	notificationGroup := app.Group("/notifications")
+	notificationGroup.Get("/", handlers.GetSentNotificationsHandler(notificationClient))
+	notificationGroup.Post("/manual", handlers.TriggerManualNotificationHandler(notificationClient))
 
 	app.Post("/orders/create", handlers.CreateOrderHandler(orderClient))
 
